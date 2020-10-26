@@ -48,12 +48,20 @@ Para hacer la descripción del dataset se utiliza el comando summary de R, el cu
 
 
 course_name: es el nombre del curso
+
 course_category: nombre de la categoría general, por ejemplo: business
+
 course_subcategory: nombre de la subcategoría, en este caso se delimite el área de la categoría, por ejemplo: Entrepreneurship
+
 students_enrolled: cantidad de estudiantes matriculados
+
 course_difficulty: cantidad de horas que requiere dedicar
+
 course_rating: ranking del curso de acuerdo con el feedback recibido
+
 course_rating_count: cantidad de veces que recibió calificación
+
+------------------------------------------------------------------------
 
 El web scrapping se realizó el 20 de octubre, y la validez depende de la frecuencia de cambios en los cursos, puede ser que se abran o cierren 
 en poco tiempo.
