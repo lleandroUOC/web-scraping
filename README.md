@@ -32,19 +32,19 @@ los datos y cómo se ha recogido.
 
 Para hacer la descripción del dataset se utiliza el comando summary de R, el cual da el siguientes resultado:
 
- course_name        course_category    course_subcategory students_enrolled 
- Length:3210        Length:3210        Length:3210        Length:3210       
- Class :character   Class :character   Class :character   Class :character  
- Mode  :character   Mode  :character   Mode  :character   Mode  :character  
+ ǀcourse_name        ǀcourse_category    ǀcourse_subcategory ǀstudents_enrolled 
+ ǀLength:3210        ǀLength:3210        ǀLength:3210        ǀLength:3210       
+ ǀClass :character   ǀClass :character   ǀClass :character   ǀClass :character  
+ ǀMode  :character   ǀMode  :character   ǀMode  :character   ǀMode  :character  
 
- course_difficulty  course_rating  course_rating_count
- Length:3210        Min.   :3.00   Length:3210        
- Class :character   1st Qu.:4.60   Class :character   
- Mode  :character   Median :4.70   Mode  :character   
-                    Mean   :4.63                      
-                    3rd Qu.:4.80                      
-                    Max.   :5.00                      
-                    NA's   :343 
+ ǀcourse_difficulty  ǀcourse_rating  ǀcourse_rating_count
+ ǀLength:3210        ǀMin.   :3.00   ǀLength:3210        
+ ǀClass :character   ǀ1st Qu.:4.60   ǀClass :character   
+ ǀMode  :character   ǀMedian :4.70   ǀMode  :character   
+                     ǀMean   :4.63                      
+                     ǀ3rd Qu.:4.80                      
+                     ǀMax.   :5.00                      
+                     ǀNA's   :343 
 
 
 course_name: es el nombre del curso
