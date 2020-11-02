@@ -29,23 +29,7 @@ Ver archivo Representación gráfica.jpg
 5. Contenido. Explicar los campos que incluye el dataset, el periodo de tiempo de
 los datos y cómo se ha recogido.
 
-
-Para hacer la descripción del dataset se utiliza el comando summary de R, el cual da el siguientes resultado:
-
- ǀcourse_name        ǀcourse_category    ǀcourse_subcategory ǀstudents_enrolled 
- ǀLength:3210        ǀLength:3210        ǀLength:3210        ǀLength:3210       
- ǀClass :character   ǀClass :character   ǀClass :character   ǀClass :character  
- ǀMode  :character   ǀMode  :character   ǀMode  :character   ǀMode  :character  
-
- ǀcourse_difficulty  ǀcourse_rating  ǀcourse_rating_count
- ǀLength:3210        ǀMin.   :3.00   ǀLength:3210        
- ǀClass :character   ǀ1st Qu.:4.60   ǀClass :character   
- ǀMode  :character   ǀMedian :4.70   ǀMode  :character   
-                     ǀMean   :4.63                      
-                     ǀ3rd Qu.:4.80                      
-                     ǀMax.   :5.00                      
-                     ǀNA's   :343 
-
+Los campos capturados en el proceso de web scraping son:
 
 course_name: es el nombre del curso
 
