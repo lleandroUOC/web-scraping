@@ -90,39 +90,51 @@ def findClass(listcourses):
     RatingCount = []
     print('inicio del proceso')
     
-    for Course in listcourses:
-        webpage = requests.get(Course)
-        soup = bs(webpage.content, 'html.parser')
-        if((soup.find('h1', class_='banner-title m-b-0 banner-title-without--subtitle')) != None):
-            CourseName.append( soup.find('h1', class_='banner-title m-b-0 banner-title-without--subtitle').get_text() )
-        else: 
-            CourseName.append('')
-        CourseCategories = soup.find_all('a', class_='_172v19u6 color-white font-weight-bold')
-        try:
-            CourseCategory.append( CourseCategories[1].get_text() )
-        except IndexError:
-            CourseCategory.append('No Category')
-        try:
-            CourseSubcategory.append( CourseCategories[2].get_text() )
-        except IndexError:
-            CourseSubcategory.append('No Subcategory')
-        if((soup.find('div',class_='rc-ProductMetrics')) != None):
-            Enrolled.append( soup.find('div',class_='rc-ProductMetrics').find_all('span')[1].get_text() )
-        else: 
-            Enrolled.append('0')
-        if((soup.find('div', class_='_16ni8zai m-b-0 m-t-1s')) != None):
-            Difficulty.append( soup.find('div', class_='_16ni8zai m-b-0 m-t-1s').get_text() )
-        else: 
-            Difficulty.append('0')
-        if((soup.find('div', class_='rc-ReviewsOverview__totals__rating')) != None):
-            Rating.append( soup.find('div', class_='rc-ReviewsOverview__totals__rating').get_text() )
-        else: 
-            Rating.append('')
-        if((soup.find('div', class_='_wmgtrl9 color-white ratings-count-expertise-style')) != None):
-            RatingCount.append( soup.find('div', class_='_wmgtrl9 color-white ratings-count-expertise-style').find('span').get_text() )
-        else: 
-            RatingCount.append('')
-        
+        for Course in listcourses:
+        try: 
+            webpage = requests.get(Course, timeout=15)
+            soup = bs(webpage.content, 'html.parser')
+            if((soup.find('h1', class_='banner-title m-b-0 banner-title-without--subtitle')) != None):
+                CourseName.append( soup.find('h1', class_='banner-title m-b-0 banner-title-without--subtitle').get_text() )
+            else: 
+                CourseName.append('')
+            CourseCategories = soup.find_all('a', class_='_172v19u6 color-white font-weight-bold')
+            try:
+                CourseCategory.append( CourseCategories[1].get_text() )
+            except IndexError:
+                CourseCategory.append('No Category')
+            try:
+                CourseSubcategory.append( CourseCategories[2].get_text() )
+            except IndexError:
+                CourseSubcategory.append('No Subcategory')
+            if((soup.find('div',class_='rc-ProductMetrics')) != None):
+                Enrolled.append( soup.find('div',class_='rc-ProductMetrics').find_all('span')[1].get_text() )
+            else: 
+                Enrolled.append('0')   
+            if((soup.find('div', class_='_16ni8zai m-b-0 m-t-1s')) != None):            
+                Difficultytemp = soup.find('div', class_='_16ni8zai m-b-0 m-t-1s').get_text()
+                if(Difficultytemp == 'Advanced Level'):   
+                    Difficulty.append('Advanced Level')
+                elif(Difficultytemp == 'Intermediate Level'):
+                    Difficulty.append('Intermediate Level')
+                else:
+                    Difficulty.append('Beginner Level')
+            else: 
+                Difficulty.append('0')
+            if((soup.find('div', class_='rc-ReviewsOverview__totals__rating')) != None):
+                Rating.append( soup.find('div', class_='rc-ReviewsOverview__totals__rating').get_text() )
+            else: 
+                Rating.append('')
+            if((soup.find('div', class_='_wmgtrl9 color-white ratings-count-expertise-style')) != None):
+                RatingCount.append( soup.find('div', class_='_wmgtrl9 color-white ratings-count-expertise-style').find('span').get_text() )
+            else: 
+                RatingCount.append('')
+        except requests.exceptions.Timeout:
+            print ('Timeout occurred')
+        except requests.Timeout:
+            print ('Timeout occurred')
+        except requests.RequestException:
+            print ('Timeout occurred')
     dataCourses = panda.DataFrame({'course_name': CourseName,
                           'course_category': CourseCategory,
                           'course_subcategory': CourseSubcategory,
@@ -130,6 +142,7 @@ def findClass(listcourses):
                           'course_difficulty':Difficulty,
                           'course_rating':Rating,
                           'course_rating_count':RatingCount})
+    dataCourses.sort_values(by=['course_category'], inplace=True)
     dataCourses.to_csv('datacourses.csv')
     print('archivo generado')
 
