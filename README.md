@@ -24,7 +24,7 @@ y calificación de los mismos.
 4. Representación gráfica. Presentar una imagen o esquema que identifique el
 dataset visualmente
 
-Ver archivo Representación gráfica.jpg
+Ver archivo Representacion grafica.001.jpeg
 
 5. Contenido. Explicar los campos que incluye el dataset, el periodo de tiempo de
 los datos y cómo se ha recogido.
