@@ -39,7 +39,7 @@ course_subcategory: nombre de la subcategoría, en este caso se delimite el áre
 
 students_enrolled: cantidad de estudiantes matriculados
 
-course_difficulty: cantidad de horas que requiere dedicar
+course_difficulty: dificultad del curso, por ejemplo: Beginner Level
 
 course_rating: ranking del curso de acuerdo con el feedback recibido
 
